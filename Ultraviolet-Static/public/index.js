@@ -21,6 +21,8 @@ const error = document.getElementById("uv-error");
 const errorCode = document.getElementById("uv-error-code");
 const connection = new BareMux.BareMuxConnection("/baremux/worker.js")
 
+
+
 form.addEventListener("submit", async (event) => {
 	event.preventDefault();
 
@@ -41,4 +43,17 @@ form.addEventListener("submit", async (event) => {
 		await connection.setTransport("/epoxy/index.mjs", [{ wisp: wispUrl }]);
 	}
 	frame.src = __uv$config.prefix + __uv$config.encodeUrl(url);
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("uv-form");
+    const checkbox = document.getElementById("agree-terms");
+    
+    form.addEventListener("submit", function (event) {
+        if (!checkbox.checked) {
+            event.preventDefault();
+            alert("You must agree to the terms before using the proxy.");
+        }
+    });
 });
