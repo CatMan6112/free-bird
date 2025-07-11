@@ -3,7 +3,7 @@ importScripts('/uv/uv.bundle.js');
 //our uv.config.js that we just made a few steps ago
 importScripts('/uv/uv.config.js');
 //the actual Ultraviolet service worker. Needed for UV to function properly.
-importScripts(__uv$config.sw || '/uv/uv.sw.js');
+importScripts(__uv$config.sw || 'uv/uv.sw.js');
 
 //create the uv service worker
 const uv = new UVServiceWorker();
